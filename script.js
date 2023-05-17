@@ -21,14 +21,23 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   var now = dayjs().format('HH'); // Perfect! (it's local military time)
-  var slots = $('.time-block').toArray();
+  var slots = $('.time-block');
   console.log(slots);
   console.log(slots[0]);
-  slots.forEach( timeBlock => 
+  slots.each( function()
   {
+    var timeBlock = parseInt( $(this).attr('id').split('-')[1]);
+    console.log(timeBlock);
+    if( timeblock > now )
+      $(this).addClass("future");
+    if( timeblock < now )
+      $(this).addClass("past");
+    if( timeblock == now )
+      $(this).addClass("present");
+
     //console.log( timeBlock.split("#").split(".") );
-    let id = timeBlock.attr('id');
-    console.log(id);
+    //let id = timeBlock.attr('id');
+    //console.log(id);
   });
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
