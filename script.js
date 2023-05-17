@@ -13,14 +13,16 @@ $(function () {
   {
     var calendarEvent = $(this).siblings('.description').val();
     var hour = $(this).parent().attr('id');
+    console.log(hour);
     localStorage.setItem( hour, calendarEvent );
+    console.log(JSON.stringify(calendarEvent));
   });
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  var now = dayjs().format('HH') - 10; // Perfect! (it's local military time)
+  var now = dayjs().format('HH'); // Perfect! (it's local military time)
   var slots = $('.time-block');
   console.log(slots);
   console.log(slots[0]);
@@ -45,7 +47,9 @@ $(function () {
   // attribute of each time-block be used to do this?
   slots.each( function()
   {
-    $(this).text( JSON.parse(localStorage.getItem( $(this).attr('id') )) );
+    var activity = localStorage.getItem( $(this).attr('id') ) || "";
+    console.log(activity)
+    $(this).children("div").siblings("textarea").text( activity );
   });
 
   // TODO: Add code to display the current date in the header of the page.
