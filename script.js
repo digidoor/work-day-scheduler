@@ -20,7 +20,7 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  var now = dayjs().format('HH'); // Perfect! (it's local military time)
+  var now = dayjs().format('HH') - 10; // Perfect! (it's local military time)
   var slots = $('.time-block');
   console.log(slots);
   console.log(slots[0]);
@@ -28,11 +28,11 @@ $(function () {
   {
     var timeBlock = parseInt( $(this).attr('id').split('-')[1]);
     console.log(timeBlock);
-    if( timeblock > now )
+    if( timeBlock > now )
       $(this).addClass("future");
-    if( timeblock < now )
+    if( timeBlock < now )
       $(this).addClass("past");
-    if( timeblock == now )
+    if( timeBlock == now )
       $(this).addClass("present");
 
     //console.log( timeBlock.split("#").split(".") );
