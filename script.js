@@ -9,7 +9,6 @@ $(function () {
     var hour = $(this).parent().attr('id');
     console.log(hour);
     localStorage.setItem( hour, calendarEvent );
-    console.log(JSON.stringify(calendarEvent));
   });
   // TODO: Add code to apply the past, present, or future class to each time
   var now = dayjs().format('HH'); // Perfect! (it's local military time)
